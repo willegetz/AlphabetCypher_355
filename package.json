@@ -1,0 +1,24 @@
+{
+  "name": "alphabetcypher_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha ./test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willegetz/AlphabetCypher_355.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willegetz/AlphabetCypher_355/issues"
+  },
+  "homepage": "https://github.com/willegetz/AlphabetCypher_355#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "mocha": "^5.1.1"
+  }
+}
