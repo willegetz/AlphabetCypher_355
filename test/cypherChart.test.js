@@ -2,9 +2,32 @@
 
 const { assert } = require('chai');
 
+function encryptString(messageToEncrypt, passKey) {
+    const alphabetMap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let encryptedMessage = '';
+
+    for (var i = 0; i < messageToEncrypt.length; i++) {
+        const keyIndex = i % passKey.length;
+        const keyLetter = passKey[keyIndex];
+
+        const letterToEncrypt = messageToEncrypt[i];
+
+        const keyLetterIndex = alphabetMap.indexOf(keyLetter.toUpperCase());
+        const letterToEncryptIndex = alphabetMap.indexOf(letterToEncrypt.toUpperCase());
+
+        const encryptedLetterIndex = ((keyLetterIndex + letterToEncryptIndex) % alphabetMap.length);
+        const encryptedLetter = alphabetMap[encryptedLetterIndex];
+
+        encryptedMessage += encryptedLetter;
+    }
+
+    return encryptedMessage;
+}
+
 describe('alphabetCypher', function () {
+    const alphabetMap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
     it('will encrypt the letter "T" to "L" when provided with the key "S"', function () {
-        const alphabetMap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const keyLetterIndex = alphabetMap.indexOf('S');
         const letterToEncryptIndex = alphabetMap.indexOf('T');
 
@@ -15,39 +38,20 @@ describe('alphabetCypher', function () {
     });
 
     it('will decrypt the letter "U" to "H" when provided with the key "N"', function () {
-        const alphabetMap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const keyLetterIndex = alphabetMap.indexOf('N');
         const letterToDecryptIndex = alphabetMap.indexOf('U');
 
         const encryptedLetterIndex = ((keyLetterIndex + letterToDecryptIndex) % alphabetMap.length);
         const expectedDecryptedLetter = 'H';
 
-        assert.equal(alphabetMap[encryptedLetterIndex], expectedDecryptedLetter);
+        const encryptedMessage = encryptString('U', 'N');
     });
 
-    it('encrypt a message using the key "snitch"', function(){
-        const alphabetMap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
+    it('encrypt a message using the key "snitch"', function () {
         const passKey = 'snitch';
         const messageToEncrypt = 'thepackagehasbeendelivered';
 
-        let encryptedMessage = '';
-
-        for(var i = 0; i < messageToEncrypt.length; i++){
-            const keyIndex = i % passKey.length;
-            const keyLetter = passKey[keyIndex];
-
-            const letterToEncrypt = messageToEncrypt[i];
-
-            const keyLetterIndex = alphabetMap.indexOf(keyLetter.toUpperCase());
-            const letterToEncryptIndex = alphabetMap.indexOf(letterToEncrypt.toUpperCase());
-
-            const encryptedLetterIndex = ((keyLetterIndex + letterToEncryptIndex) % alphabetMap.length);
-            const encryptedLetter = alphabetMap[encryptedLetterIndex];
-          
-            encryptedMessage += encryptedLetter;
-
-        }
+        const encryptedMessage = encryptString(messageToEncrypt, passKey);
 
         assert.equal(encryptedMessage, 'lumicjcnoxjhkomxpkwyqogywq'.toUpperCase());
     });
