@@ -7,7 +7,7 @@ const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
 
 const sourceFiles = [
-    // 'dependencies/**/*.js',
+    'app/**/*.js',
     // 'signet-types.js',
     // 'index.js',
     '!node_modules/**'
@@ -33,11 +33,11 @@ gulp.task('lint', () => {
         .pipe(eslint.failAfterError());
 });
 
-// gulp.task('pre-test', function () {
-//     return gulp.src(sourceFiles)
-//         .pipe(istanbul())
-//         .pipe(istanbul.hookRequire());
-// });
+gulp.task('pre-test', function () {
+    return gulp.src(sourceFiles)
+        .pipe(istanbul())
+        .pipe(istanbul.hookRequire());
+});
 
 gulp.task('test', ['lint'], function () { //, 'pre-test'], function () {
     gulp.src(testFiles, { read: false })
