@@ -25,26 +25,24 @@ function encryptString(messageToEncrypt, passKey) {
 }
 
 describe('alphabetCypher', function () {
-    const alphabetMap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
     it('will encrypt the letter "T" to "L" when provided with the key "S"', function () {
-        const keyLetterIndex = alphabetMap.indexOf('S');
-        const letterToEncryptIndex = alphabetMap.indexOf('T');
+        const passKey = 'S';
+        const letterToEncrypt = 'T';
 
-        const encryptedLetterIndex = ((keyLetterIndex + letterToEncryptIndex) % alphabetMap.length);
+        const encryptedLetter = encryptString(letterToEncrypt, passKey);
         const expectedEncryptedLetter = 'L';
 
-        assert.equal(alphabetMap[encryptedLetterIndex], expectedEncryptedLetter);
+        assert.equal(encryptedLetter, expectedEncryptedLetter);
     });
 
     it('will decrypt the letter "U" to "H" when provided with the key "N"', function () {
-        const keyLetterIndex = alphabetMap.indexOf('N');
-        const letterToDecryptIndex = alphabetMap.indexOf('U');
+        const passKey = 'N';
+        const letterToDecrypt = 'U';
 
-        const encryptedLetterIndex = ((keyLetterIndex + letterToDecryptIndex) % alphabetMap.length);
+        const decryptedLetter = encryptString(letterToDecrypt, passKey);
         const expectedDecryptedLetter = 'H';
 
-        const encryptedMessage = encryptString('U', 'N');
+        assert.equal(decryptedLetter, expectedDecryptedLetter);
     });
 
     it('encrypt a message using the key "snitch"', function () {
