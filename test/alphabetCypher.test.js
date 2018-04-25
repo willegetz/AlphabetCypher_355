@@ -8,7 +8,7 @@ describe('alphabetCypher', function () {
         const passKey = 'S';
         const letterToEncrypt = 'T';
 
-        const encryptedLetter = alphabetCypher.encryptString(letterToEncrypt, passKey);
+        const encryptedLetter = alphabetCypher.performEncryption(letterToEncrypt, passKey);
         const expectedEncryptedLetter = 'L';
 
         assert.equal(encryptedLetter, expectedEncryptedLetter);
@@ -18,7 +18,7 @@ describe('alphabetCypher', function () {
         const passKey = 'N';
         const letterToDecrypt = 'U';
 
-        const decryptedLetter = alphabetCypher.encryptString(letterToDecrypt, passKey);
+        const decryptedLetter = alphabetCypher.performDecryption(letterToDecrypt, passKey);
         const expectedDecryptedLetter = 'H';
 
         assert.equal(decryptedLetter, expectedDecryptedLetter);
@@ -28,7 +28,7 @@ describe('alphabetCypher', function () {
         const passKey = 'snitch';
         const messageToEncrypt = 'thepackagehasbeendelivered';
 
-        const encryptedMessage = alphabetCypher.encryptString(messageToEncrypt, passKey);
+        const encryptedMessage = alphabetCypher.performEncryption(messageToEncrypt, passKey);
 
         assert.equal(encryptedMessage, 'lumicjcnoxjhkomxpkwyqogywq'.toUpperCase());
     });

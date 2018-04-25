@@ -1,7 +1,7 @@
 'use strict';
 
 function alphabetCypher(){
-    function encryptString(messageToEncrypt, passKey) {
+    function encryptOrDecryptString(messageToEncrypt, passKey) {
         const alphabetMap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         let encryptedMessage = '';
     
@@ -23,8 +23,17 @@ function alphabetCypher(){
         return encryptedMessage;
     }
 
+    function performDecryption(messageToDecrypt, passKey){
+        return encryptOrDecryptString(messageToDecrypt, passKey);
+    }
+
+    function performEncryption(messageToEncrypt, passKey){
+        return encryptOrDecryptString(messageToEncrypt, passKey);
+    }
+
     return {
-        encryptString : encryptString
+        performDecryption: performDecryption,
+        performEncryption: performEncryption
     };
 }
 
