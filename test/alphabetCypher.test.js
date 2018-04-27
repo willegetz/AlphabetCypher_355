@@ -45,7 +45,7 @@ describe('alphabetCypher', function () {
         assert.equal(decryptedMessage, expectedOutput);
     });
 
-    it('will encrypt "theredfoxtrotsquietlyatmidnight" to "uvrufrsryherugdxjsgozogpjralhvg" with the key "bond "', function () {
+    it('will encrypt "theredfoxtrotsquietlyatmidnight" to "uvrufrsryherugdxjsgozogpjralhvg" with the key "bond"', function () {
         const passKey = 'bond';
         const messageToEncrypt = 'theredfoxtrotsquietlyatmidnight';
 
@@ -53,5 +53,55 @@ describe('alphabetCypher', function () {
         const expectedOutput = 'uvrufrsryherugdxjsgozogpjralhvg';
 
         assert.equal(encryptedMessage, expectedOutput);
+    });
+
+    it('will encrypt "murderontheorientexpress" to "flrlrkfnbuxfrqrgkefckvsa" with the key "train"', function () {
+        const passKey = 'train';
+        const messageToEncrypt = 'murderontheorientexpress';
+
+        const encryptedMessage = alphabetCypher.performEncryption(messageToEncrypt, passKey);
+        const expectedOutput = 'flrlrkfnbuxfrqrgkefckvsa';
+
+        assert.equal(encryptedMessage, expectedOutput);
+    });
+
+    it('will encrypt "themolessnuckintothegardenlastnight" to "zhvpsyksjqypqiewsgnexdvqkncdwgtixkx" with the key "garden"', function () {
+        const passKey = 'garden';
+        const messageToEncrypt = 'themolessnuckintothegardenlastnight';
+
+        const encryptedMessage = alphabetCypher.performEncryption(messageToEncrypt, passKey);
+        const expectedOutput = 'zhvpsyksjqypqiewsgnexdvqkncdwgtixkx';
+
+        assert.equal(encryptedMessage, expectedOutput);
+    });
+
+    it('will decrypt "klatrgafedvtssdwywcyty" to "iamtheprettiestunicorn" with the key "cloak"', function () {
+        const passKey = 'cloak';
+        const messageToDecrypt = 'klatrgafedvtssdwywcyty';
+
+        const decryptedMessage = alphabetCypher.performDecryption(messageToDecrypt, passKey);
+        const expectedOutput = 'iamtheprettiestunicorn';
+
+        assert.equal(decryptedMessage, expectedOutput);
+    });
+
+    it('will decrypt "pjphmfamhrcaifxifvvfmzwqtmyswst" to "alwayslookonthebrightsideoflife" with the key "python"', function () {
+        const passKey = 'python';
+        const messageToDecrypt = 'pjphmfamhrcaifxifvvfmzwqtmyswst';
+
+        const decryptedMessage = alphabetCypher.performDecryption(messageToDecrypt, passKey);
+        const expectedOutput = 'alwayslookonthebrightsideoflife';
+
+        assert.equal(decryptedMessage, expectedOutput);
+    });
+
+    it('will decrypt "rcfpsgfspiecbcc" to "foryoureyesonly" with the key "moore"', function () {
+        const passKey = 'moore';
+        const messageToDecrypt = 'rcfpsgfspiecbcc';
+
+        const decryptedMessage = alphabetCypher.performDecryption(messageToDecrypt, passKey);
+        const expectedOutput = 'foryoureyesonly';
+
+        assert.equal(decryptedMessage, expectedOutput);
     });
 });
