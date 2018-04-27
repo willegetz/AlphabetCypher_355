@@ -104,4 +104,24 @@ describe('alphabetCypher', function () {
 
         assert.equal(decryptedMessage, expectedOutput);
     });
+
+    it('will encrypt "Human history can be viewed as a slowly dawning awareness that we are members of a larger group" to "judlfhosgqrpnsnheikenpvayafnonwqdgwaknxloaxeagsjezazwrcrvxwmheeuowldaxgrtgizmp" with the key "carlsagan"', function(){
+        const passKey = 'carlsagan';
+        const messageToEncrypt = 'Human history can be viewed as a slowly dawning awareness that we are members of a larger group';
+
+        const encryptedMessage = alphabetCypher.performEncryption(messageToEncrypt, passKey);
+        const expectedOutput = 'judlfhosgqrpnsnheikenpvayafnonwqdgwaknxloaxeagsjezazwrcrvxwmheeuowldaxgrtgizmp';
+
+        assert.equal(encryptedMessage, expectedOutput);
+    });
+
+    it('will decrypt "tecllibigadfpksktykmzekotwuctyfeatspcnlwlisagglpog" to "relativitydoessetlimitsonwhathumanscanultimatelydo" with the key "carlsagan"', function(){
+        const passKey = 'carlsagan';
+        const messageToDecrypt = 'tecllibigadfpksktykmzekotwuctyfeatspcnlwlisagglpog';
+
+        const decryptedMessage = alphabetCypher.performDecryption(messageToDecrypt, passKey);
+        const expectedOutput = 'relativitydoessetlimitsonwhathumanscanultimatelydo';
+
+        assert.equal(decryptedMessage, expectedOutput);
+    });
 });

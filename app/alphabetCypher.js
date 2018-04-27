@@ -11,7 +11,13 @@ function alphabetCypher() {
         return (keyLetterIndex + letterToEncryptIndex) % alphabetMap.length;
     }
 
+    function sterilizeMessage(messageCypher) {
+        return messageCypher.replace(/\s/g, '').toLowerCase();
+    }
+
     function applyCypher(messageCypher, passKey, cypherOperation) {
+        messageCypher = sterilizeMessage(messageCypher);
+        
         let cypheredMessage = '';
 
         for (var i = 0; i < messageCypher.length; i++) {
