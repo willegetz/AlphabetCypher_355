@@ -15,6 +15,7 @@ describe('alphabetCypher', function () {
     });
 
     it('will decrypt the letter "U" to "H" when provided with the key "N"', function () {
+        
         const passKey = 'N';
         const letterToDecrypt = 'U';
 
@@ -30,6 +31,15 @@ describe('alphabetCypher', function () {
 
         const encryptedMessage = alphabetCypher.performEncryption(messageToEncrypt, passKey);
 
-        assert.equal(encryptedMessage, 'lumicjcnoxjhkomxpkwyqogywq'.toUpperCase());
+        assert.equal(encryptedMessage, 'LUMICJCNOXJHKOMXPKWYQOGYWQ');
+    });
+
+    it('decrypt a message using the key "snitch"', function () {
+        const passKey = 'snitch';
+        const messageToDecrypt = 'lumicjcnoxjhkomxpkwyqogywq';
+
+        const decryptedMessage = alphabetCypher.performDecryption(messageToDecrypt, passKey);
+
+        assert.equal(decryptedMessage, 'THEPACKAGEHASBEENDELIVERED');
     });
 });
