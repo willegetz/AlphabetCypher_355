@@ -11,26 +11,24 @@ function alphabetCypher() {
         return (keyLetterIndex + letterToEncryptIndex) % alphabetMap.length;
     }
 
-    function applyCypher(messageToDecrypt, passKey, decryptionOperation) {
-        let decryptedMessage = '';
+    function applyCypher(messageCypher, passKey, cypherOperation) {
+        let cypheredMessage = '';
 
-        for (var i = 0; i < messageToDecrypt.length; i++) {
+        for (var i = 0; i < messageCypher.length; i++) {
             const keyIndex = i % passKey.length;
             const keyLetter = passKey[keyIndex];
-
-            const letterToDecrypt = messageToDecrypt[i];
-
             const keyLetterIndex = alphabetMap.indexOf(keyLetter);
-            const letterToDecryptIndex = alphabetMap.indexOf(letterToDecrypt);
 
-            const decryptedLetterIndex = decryptionOperation(keyLetterIndex, letterToDecryptIndex);
+            const letterToCypher = messageCypher[i];
+            const letterToCypherIndex = alphabetMap.indexOf(letterToCypher);
 
-            const decryptedLetter = alphabetMap[decryptedLetterIndex];
+            const cypheredLetterIndex = cypherOperation(keyLetterIndex, letterToCypherIndex);
+            const cypheredLetter = alphabetMap[cypheredLetterIndex];
 
-            decryptedMessage += decryptedLetter;
+            cypheredMessage += cypheredLetter;
         }
 
-        return decryptedMessage;
+        return cypheredMessage;
     }
 
     function performDecryption(messageToDecrypt, passKey) {
