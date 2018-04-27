@@ -1,7 +1,7 @@
 'use strict';
 
 function alphabetCypher() {
-    const alphabetMap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const alphabetMap = 'abcdefghijklmnopqrstuvwxyz';
 
     function getDecryptedLetterIndex(keyLetterIndex, letterToDecryptIndex) {
         return ((alphabetMap.length - keyLetterIndex) + letterToDecryptIndex) % alphabetMap.length;
@@ -20,8 +20,8 @@ function alphabetCypher() {
 
             const letterToDecrypt = messageToDecrypt[i];
 
-            const keyLetterIndex = alphabetMap.indexOf(keyLetter.toUpperCase());
-            const letterToDecryptIndex = alphabetMap.indexOf(letterToDecrypt.toUpperCase());
+            const keyLetterIndex = alphabetMap.indexOf(keyLetter);
+            const letterToDecryptIndex = alphabetMap.indexOf(letterToDecrypt);
 
             const decryptedLetterIndex = decryptionOperation(keyLetterIndex, letterToDecryptIndex);
 
