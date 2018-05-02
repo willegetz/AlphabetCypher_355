@@ -33,9 +33,9 @@ if (!message || !key || !cypherAction) {
 
 if (cypherAction === 'e') {
     const encryptedMessage = alphabetCypher.performEncryption(message, key);
-    console.log(encryptedMessage);
+    console.log(`\n\nYour encrypted message is:\n  ${encryptedMessage}\n\n`);
 } else if(cypherAction === 'd'){
     const decryptedMessage = alphabetCypher.performDecryption(message, key);
-    console.log(decryptedMessage);
+    console.log(`\n\nYour decrypted message is:\n  ${decryptedMessage}\n\n`);
 }
 
